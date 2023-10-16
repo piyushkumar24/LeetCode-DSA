@@ -10,7 +10,6 @@
  */
 
 
-
 // Iterative Approach
 
 class Solution {
@@ -29,8 +28,6 @@ public:
         return prevptr;
     }
 };
-
-
 
 
 // Recursive Approach
