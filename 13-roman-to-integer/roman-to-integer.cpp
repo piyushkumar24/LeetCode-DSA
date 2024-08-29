@@ -1,17 +1,22 @@
 class Solution {
 public:
+    int getVal(char i){
+        if(i=='I') return 1;
+        else if(i=='V') return 5;
+        else if(i=='X') return 10;
+        else if(i=='L') return 50;
+        else if(i=='C') return 100;
+        else if(i=='D') return 500;
+        else if(i=='M') return 1000;
+        else return 0;
+    }
     int romanToInt(string s) {
-        int ans=0;
-        unordered_map <char,int> mp{{'I',1},{'V',5},{'X',10},{'L',50},{'C',100},{'D',500},{'M',1000}};
-        for(int i=0;i<s.size();i++){
-            if(mp[s[i]]<mp[s[i+1]]){
-                //for cases such as IV,CM, XL, etc...
-                ans=ans-mp[s[i]];
-            }
-            else{
-                ans=ans+mp[s[i]];
-            }
+        int n=s.length();
+        int sum=0;
+        for(int i=0;i<n;i++){
+            if(i+1<n && getVal(s[i])<getVal(s[i+1])) sum=sum-getVal(s[i]);
+            else sum=sum+getVal(s[i]);
         }
-        return ans;
+        return sum;
     }
 };
