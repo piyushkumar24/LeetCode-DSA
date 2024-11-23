@@ -9,22 +9,18 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
 class Solution {
 public:
-    int maxPathSum(TreeNode* root) {
-        int maxPath = INT_MIN;  
-        DFS(root, maxPath);  
-        return maxPath;  
+    int maxPathSumDown(TreeNode *root, int &maxi){
+        if(root==NULL) return 0;
+        int lh=max(0,maxPathSumDown(root->left, maxi));
+        int rh=max(0,maxPathSumDown(root->right, maxi));
+        maxi=max(maxi, root->val+lh+rh);
+        return root->val+max(lh, rh);
     }
-private:
-    int DFS(TreeNode* root, int& maxPath) {
-        if (root == NULL) {
-            return 0;  
-        }
-        int lmax = max(DFS(root->left, maxPath), 0);
-        int rmax = max(DFS(root->right, maxPath), 0);
-        maxPath = max(maxPath, root->val + lmax + rmax);
-        return root->val + max(lmax, rmax);
+    int maxPathSum(TreeNode* root) {
+        int maxi=INT_MIN;
+        maxPathSumDown(root, maxi);
+        return maxi;
     }
 };
