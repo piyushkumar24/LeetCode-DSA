@@ -9,41 +9,27 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-        vector<vector<int>> ans;
-        if (root == NULL) {
-            return ans;
-        }
-        queue<TreeNode*> q;
+        vector<vector<int>>ans;
+        if(root==NULL) return ans;
+        queue<TreeNode *>q;
         q.push(root);
-        bool lefttoRight = true;
-        while (!q.empty()) {
-            int width = q.size();
-            vector<int> oneLevel(width);
-            
-            for (int i = 0; i < width; i++) {
-                TreeNode* front = q.front();
-            q.pop();
-                int index;
-                if (lefttoRight) {
-                    index = i;
-                } 
-                else {
-                    index = width - i - 1;
-                }
-                oneLevel[index]=front->val;
-                if(front->left){
-                   q.push(front->left);
-                }
-                if(front->right){
-                   q.push(front->right);
-                }
+        bool leftToRight=true;
+        while(!q.empty()){
+            int size=q.size();
+            vector<int>level(size);
+            for(int i=0;i<size;i++){
+                TreeNode *node=q.front();
+                q.pop();
+                int index=(leftToRight) ? (i) : (size-i-1);
+                level[index]=node->val;
+                if(node->left!=NULL) q.push(node->left);
+                if(node->right!=NULL) q.push(node->right);
             }
-            lefttoRight =!lefttoRight;
-            ans.push_back(oneLevel);
+            leftToRight=!leftToRight;
+            ans.push_back(level);
         }
         return ans;
     }
