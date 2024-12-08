@@ -6,9 +6,7 @@ public:
         int high=n-1;
         int startingPosition=lower_bound(nums,low,high,target);
         int endingPosition=lower_bound(nums,low,high,target+1)-1;
-        if(startingPosition<n && nums[startingPosition]==target){
-            return {startingPosition,endingPosition};
-        }
+        if(startingPosition<n && nums[startingPosition]==target) return {startingPosition,endingPosition};
         return {-1,-1};
     }
     
@@ -20,9 +18,7 @@ public:
                 ans=mid;
                 high=mid-1;
             }
-            else{
-                low=mid+1;
-            }
+            else low=mid+1;
         }
         return ans;
     }
