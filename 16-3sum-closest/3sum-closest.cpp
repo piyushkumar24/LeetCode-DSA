@@ -7,9 +7,7 @@ public:
             for (int j=i+1;j<nums.size()-1;j++){
                 for (int k=j+1;k<nums.size();k++){
                     int current_sum=nums[i]+nums[j]+nums[k];
-                    if (abs(current_sum-target)<abs(closest_sum-target)){
-                        closest_sum=current_sum;
-                    }
+                    if (abs(current_sum-target)<abs(closest_sum-target)) closest_sum=current_sum;
                 }
             }
         }
