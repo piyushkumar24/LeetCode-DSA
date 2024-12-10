@@ -1,23 +1,19 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        reverse(s.begin(),s.end());
+        reverse(s.begin(), s.end());
         int n=s.length();
-        int left=0;
-        int right=0;
-        int i=0;
+        int left=0, right=0, i=0;
         while(i<n){
-            while(i<n && s[i]==' ') { // Skipping the Leading Spaces
-                i++;
+            while(i<n && s[i]==' '){ // Skipping the leading spaces
+                i++; 
             }
-            if(i==n){
-                break; // To stop index going out of bounds
-            }
+            if(i==n) break; // To stop index going out of bonds
             while(i<n && s[i]!=' '){ // Copy characters of a word to the correct position
                 s[right++]=s[i++];
             }
-            reverse(s.begin()+left,s.begin()+right); // Reverse individual words
-            s[right++]=' '; // Add space between words
+            reverse(s.begin()+left, s.begin()+right); // Reverse indiviual words
+            s[right++]=' '; // Add space betewen words
             left=right;
             i++;
         }
