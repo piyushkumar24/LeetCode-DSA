@@ -10,9 +10,7 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        if(s.length()!=t.length()){
-            return false;
-        }
+        if(s.length()!=t.length()) return false;
         int count[26]={0};
         for(char x:s){
             count[x-'a']++;
@@ -21,9 +19,7 @@ public:
             count[x-'a']--;
         }
         for(int val:count){
-            if(val!=0){
-                return false;
-            }
+            if(val!=0) return false;
         }
         return true;
     }
