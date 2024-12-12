@@ -16,16 +16,12 @@
 
 // class Solution {
 // public:
-
 //     void Postorder (TreeNode *root,vector<int>&ans){
-//         if(root==NULL){
-//             return;
-//         }
+//         if(root==NULL) return;
 //         Postorder(root->left,ans);
 //         Postorder(root->right,ans);
 //         ans.push_back(root->val);
 //     }
-
 //     vector<int> postorderTraversal(TreeNode* root) {
 //         vector<int>ans;
 //         Postorder(root,ans);
@@ -42,29 +38,22 @@
 // class Solution {
 // public:
 //     vector<int> postorderTraversal(TreeNode* root) {
-//         vector<int>ans;
-//         if(root==NULL){
-//             return ans;
+//         vector<int>postorder;
+//         if(root==NULL) return postorder;
+//         stack<TreeNode *>st1,st2;
+//         st1.push(root);
+//         while(!st1.empty()){
+//             root=st1.top();
+//             st1.pop();
+//             st2.push(root);
+//             if(root->left!=NULL) st1.push(root->left);
+//             if(root->right!=NULL) st1.push(root->right);
 //         }
-//         stack <TreeNode *>s1;
-//         stack <TreeNode *>s2;
-//         s1.push(root);
-//         while(!s1.empty()){
-//             root=s1.top();
-//             s1.pop();
-//             s2.push(root);
-//             if(root->left!=NULL){
-//                 s1.push(root->left);
-//             }
-//             if(root->right!=NULL){
-//                 s1.push(root->right);
-//             }
+//         while(!st2.empty()){
+//             postorder.push_back(st2.top()->val);
+//             st2.pop();
 //         }
-//         while(!s2.empty()){
-//             ans.push_back(s2.top()->val);
-//             s2.pop();
-//         }
-//         return ans;
+//         return postorder;
 //     }
 // };
 
@@ -77,33 +66,29 @@
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
-        vector<int>ans;
-        if(root==NULL){
-            return ans;
-        }
-        stack<TreeNode *>s;
-        while(root!=NULL || !s.empty()){
+        vector<int>Postorder;
+        if(root==NULL) return Postorder;
+        stack<TreeNode*>st;
+        while(root!=NULL || !st.empty()){
             if(root!=NULL){
-                s.push(root);
+                st.push(root);
                 root=root->left;
             }
             else{
-                TreeNode *temp=s.top() ->right;
+                TreeNode *temp=st.top()->right;
                 if(temp==NULL){
-                    temp=s.top();
-                    s.pop();
-                    ans.push_back(temp->val);
-                    while(!s.empty() && temp==s.top()->right){
-                        temp=s.top();
-                        s.pop();
-                        ans.push_back(temp->val);
+                    temp=st.top();
+                    st.pop();
+                    Postorder.push_back(temp->val);
+                    while(!st.empty() && temp==st.top()->right){
+                        temp=st.top();
+                        st.pop();
+                        Postorder.push_back(temp->val);
                     }
                 }
-                else{
-                    root=temp;
-                }
+                else root=temp;
             }
         }
-        return ans;
+        return Postorder;
     }
 };
