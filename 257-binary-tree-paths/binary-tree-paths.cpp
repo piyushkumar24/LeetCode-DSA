@@ -14,7 +14,7 @@ public:
     void solve(TreeNode *root, vector<string>&ans, string s){
         if(root==NULL) return;
         s=s+to_string(root->val);
-        s=s+"->";
+        s+="->";
         if(root->left==NULL && root->right==NULL){
             s.erase(s.length()-2);
             ans.push_back(s);
