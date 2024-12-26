@@ -52,13 +52,14 @@ public:
                     vis[node->right]=1;
                     q.push(node->right);
                 }
+                // Add unvisited parent node to the queue
                 if(mpp[node]!=NULL && !vis[mpp[node]]){
                     fl=1;
                     vis[mpp[node]]=1;
                     q.push(mpp[node]);
                 }
             }
-            if(fl) maxi++;
+            if(fl!=0) maxi++;
         }
         return maxi;
     }
