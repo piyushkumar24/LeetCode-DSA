@@ -15,26 +15,26 @@
 
 class Solution {
 public:
-    int countNodes(TreeNode* root) {
-        if (root == NULL) return 0;
-        int lh = findHeightLeft(root);
-        int rh = findHeightRight(root);
-        if (lh == rh) return (1 << lh) - 1; 
+    int countNodes(TreeNode* root){
+        if(root==NULL) return 0;
+        int lh=findHeightLeft(root);
+        int rh=findHeightRight(root);
+        if(lh==rh) return (1<<lh)-1; 
         return 1 + countNodes(root->left) + countNodes(root->right);
     }
-    int findHeightLeft(TreeNode* node) {
-        int height = 0;
-        while (node) {
+    int findHeightLeft(TreeNode* node){
+        int height=0;
+        while(node!=NULL){
             height++;
-            node = node->left;
+            node=node->left;
         }
         return height;
     }    
-    int findHeightRight(TreeNode* node) {
-        int height = 0;
-        while (node) {
+    int findHeightRight(TreeNode* node){
+        int height=0;
+        while(node!=NULL){
             height++;
-            node = node->right;
+            node=node->right;
         }
         return height;
     }
@@ -47,12 +47,12 @@ public:
 
 // class Solution {
 // public:
-//     int countNodes(TreeNode* root) {
-//         if(root == nullptr) return 0;
-//         int cnt = 0;
-//         if(root != nullptr) cnt++;
-//         cnt += countNodes(root->left);
-//         cnt += countNodes(root->right);
+//     int countNodes(TreeNode* root){
+//         if(root==nullptr) return 0;
+//         int cnt=0;
+//         if(root!=nullptr) cnt++;
+//         cnt+=countNodes(root->left);
+//         cnt+=countNodes(root->right);
 //         return cnt;
 //     }
 // };
