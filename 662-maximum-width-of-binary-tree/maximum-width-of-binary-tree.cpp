@@ -13,7 +13,7 @@
 class Solution {
 public:
     int widthOfBinaryTree(TreeNode* root) {
-        if(!root) return 0;
+        if(root==NULL) return 0;
         int maxwidth=0;
         queue<pair<TreeNode*,int>> q; //[node,index]
         q.push({root,0});
@@ -27,8 +27,8 @@ public:
                 q.pop();
                 if(i==0) first=cur_idx;
                 if(i==size-1) last=cur_idx;
-                if(node->left) q.push({node->left,(long long)cur_idx*2+1});
-                if(node->right) q.push({node->right,(long long)cur_idx*2+2});
+                if(node->left!=NULL) q.push({node->left,(long long)cur_idx*2+1});
+                if(node->right!=NULL) q.push({node->right,(long long)cur_idx*2+2});
             }
             maxwidth=max(maxwidth,last-first+1);
         }
