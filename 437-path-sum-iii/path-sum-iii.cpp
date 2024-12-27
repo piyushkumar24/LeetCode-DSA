@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-int ans=0;
+    int ans=0;
     void helper(TreeNode *root, int targetSum, long long sum){
         if(root==NULL) return;
         sum+=root->val;
