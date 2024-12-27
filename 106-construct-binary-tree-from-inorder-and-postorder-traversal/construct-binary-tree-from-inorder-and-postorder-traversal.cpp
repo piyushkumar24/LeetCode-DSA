@@ -9,37 +9,24 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
 class Solution {
 public:
-    void createmapping(vector<int> inorder,map<int,int>& nodetoindex,int n){
-        for(int i=0;i<n;i++){
-            nodetoindex[inorder[i]]=i;
-        }
-    }
-    TreeNode* solve(vector<int> in,vector<int> post,int &index, int inorderstart,int inorderend,map<int,int>& nodetoindex,int n){
-        if(index<0 || inorderstart > inorderend) return NULL;
-
-        int element=post[index];
-        TreeNode* root=new TreeNode(element);
-        int position=nodetoindex[element];
-        index-=1;
-
-        
-        root->right=solve(in,post,index,position+1,inorderend,nodetoindex,n);
-        root->left=solve(in,post,index,inorderstart,position-1,nodetoindex,n);
-
+    TreeNode *build(vector<int>&inorder, int inStart, int inEnd, vector<int>&postorder, int postStart, int postEnd, map<int, int>&mpp){
+        if(inStart>inEnd || postStart>postEnd) return NULL;
+        TreeNode *root=new TreeNode(postorder[postEnd]);
+        int rootPos=mpp[postorder[postEnd]];
+        int leftNums=rootPos-inStart;
+        root->left=build(inorder, inStart, rootPos-1, postorder, postStart, postStart+leftNums-1, mpp);
+        root->right=build(inorder, rootPos+1, inEnd, postorder, postStart+leftNums, postEnd-1, mpp);
         return root;
     }
-
-
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-        int n=inorder.size();
-        int postorderindex=n-1;
-        
-        map<int,int> nodetoindex;
-        createmapping(inorder,nodetoindex,n);
-        TreeNode* ans=solve(inorder,postorder,postorderindex,0,n-1,nodetoindex,n);
-        return ans;
+        if(inorder.size()!=postorder.size()) return NULL;
+        map<int, int>mpp;
+        for(int i=0;i<inorder.size();i++){
+            mpp[inorder[i]]=i;
+        }
+        TreeNode *root=build(inorder, 0, inorder.size()-1, postorder, 0, postorder.size()-1, mpp);
+        return root;
     }
 };
