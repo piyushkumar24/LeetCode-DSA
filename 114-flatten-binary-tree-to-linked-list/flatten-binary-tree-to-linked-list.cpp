@@ -17,7 +17,7 @@
 // class Solution {
 // public:
 //     TreeNode *prev=NULL;
-//     void flatten(TreeNode* root) {
+//     void flatten(TreeNode* root){
 //         if(root==NULL) return;
 //         flatten(root->right);
 //         flatten(root->left);
@@ -32,9 +32,9 @@
 
 // USING ITERATIVE APPROACH STACK :-
 
-// class Solution {
+// class Solution{
 // public:
-//     void flatten(TreeNode* root) {
+//     void flatten(TreeNode* root){
 //         if(root==NULL) return;
 //         stack<TreeNode *>st;
 //         st.push(root);
@@ -52,12 +52,11 @@
 
 
 
-
 // USING INTUITION BEHIND MORRIS TRAVERSAL :-
 
 class Solution {
 public:
-    void flatten(TreeNode* root) {
+    void flatten(TreeNode* root){
         TreeNode *curr=root;
         while(curr!=NULL){
             if(curr->left!=NULL){
