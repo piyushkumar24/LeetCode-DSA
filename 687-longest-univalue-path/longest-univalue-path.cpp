@@ -16,12 +16,8 @@ public:
         int leftPath=longestPathCalculation(root->left, maxi);
         int rightPath=longestPathCalculation(root->right, maxi);
         int left=0, right=0;
-        if(root->left!=NULL && root->left->val==root->val){
-            left=leftPath+1;
-        }
-        if(root->right!=NULL && root->right->val==root->val){
-            right=rightPath+1;
-        }
+        if(root->left!=NULL && root->left->val==root->val) left=leftPath+1;
+        if(root->right!=NULL && root->right->val==root->val) right=rightPath+1;
         maxi=max(maxi, left+right);
         return max(left,right);
     }
