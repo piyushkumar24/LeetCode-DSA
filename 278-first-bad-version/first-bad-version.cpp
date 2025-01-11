@@ -11,9 +11,7 @@ public:
                 ans=mid;
                 h=mid-1;
             }
-            else {
-                l=mid+1;
-            }
+            else l=mid+1;
         }
         return ans;
     }
