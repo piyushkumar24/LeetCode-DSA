@@ -6,9 +6,7 @@ public:
             mpp[c]++;
         }
         for(char c:ransomNote){
-            if(mpp[c]<=0){
-                return false;
-            }
+            if(mpp[c]<=0) return false;
             mpp[c]--;
         }
         return true;
