@@ -2,13 +2,13 @@ class Solution {
 public:
     int myAtoi(string s) {
         int len=s.size();
-        double num = 0;
+        double num=0;
         int i=0;
-        while(s[i] == ' '){
+        while(s[i]==' '){
             i++;
         }
-        bool positive=s[i] == '+';
-        bool negative=s[i] == '-';
+        bool positive=s[i]=='+';
+        bool negative=s[i]=='-';
         positive==true ? i++ : i;
         negative==true ? i++ : i;
         while(i<len && s[i]>='0' && s[i]<='9'){
