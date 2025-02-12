@@ -14,7 +14,7 @@ public:
                 nn=nn/2;
             }
         }
-        if(n<0) ans=(double)(1.0) / (double)(ans);
+        if(n<0) ans=(double)(1.0)/(double)(ans);
         return ans;
     }
 };
