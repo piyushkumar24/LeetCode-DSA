@@ -8,10 +8,6 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-#include <iostream>
-using namespace std;
-
-
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
@@ -19,7 +15,6 @@ public:
         ListNode *dummy = new ListNode(0);
         dummy->next=head;
         ListNode *prev=dummy;
-
         while (prev->next!=NULL && prev->next->next!=NULL) {
             ListNode *first=prev->next;
             ListNode *second=prev->next->next;
