@@ -24,7 +24,7 @@ class Solution {
     }
 public:
     vector<string> generateParenthesis(int n) {
-         string op="";
+        string op="";
         vector<string> ans;
         solve(0,0,n,ans,op,0);
         return ans;
