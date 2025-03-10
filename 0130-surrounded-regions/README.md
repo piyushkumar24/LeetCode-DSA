@@ -18,6 +18,7 @@ The other three &#39;O&#39; form a surrounded region, so they are flipped.
 <p><strong class="example">Example 2:</strong></p>
 
 
+
 <pre>
 <strong>Input:</strong> board = [[&quot;X&quot;]]
 <strong>Output:</strong> [[&quot;X&quot;]]
